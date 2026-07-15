@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SBCUSD Purposeful Pathways — Job Listings</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="nav-brand" href="index.html">SBCUSD Purposeful Pathways</a>
+    <ul class="nav-links">
+      <li><a href="index.html">About</a></li>
+      <li><a href="graduates.html">Graduates</a></li>
+      <li><a href="jobs.html" class="active">Jobs</a></li>
+      <li><a href="contact.html">Get in Touch</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Job &amp; Career Opportunities</h1>
+  <p>Opportunities aligned with SBCUSD pathways. Pathway completers meet minimum qualifications for SB County employment — eliminating barriers to entry.</p>
+  <div class="hero-badges">
+    <span class="badge">Internships Available</span>
+    <span class="badge">Pre-Apprenticeships</span>
+    <span class="badge">Industry Certifications</span>
+  </div>
+</section>
+
+<main>
+  <div class="filter-row">
+    <button class="f-btn active" onclick="filterJobs('all', this)">All</button>
+    <button class="f-btn" onclick="filterJobs('tech', this)">Technology</button>
+    <button class="f-btn" onclick="filterJobs('health', this)">Healthcare</button>
+    <button class="f-btn" onclick="filterJobs('trades', this)">Trades</button>
+    <button class="f-btn" onclick="filterJobs('public', this)">Public Safety</button>
+    <button class="f-btn" onclick="filterJobs('business', this)">Business</button>
+    <button class="f-btn" onclick="filterJobs('arts', this)">Arts &amp; Media</button>
+  </div>
+
+  <div class="jobs-list" id="jobsList">
+
+    <div class="job-card" data-cat="tech">
+      <div class="job-left">
+        <div class="job-logo">&#128187;</div>
+        <div class="job-info">
+          <h3>IT Support Technician</h3>
+          <div class="job-co">San Bernardino County</div>
+          <div class="job-meta">
+            <span>&#128205; San Bernardino, CA</span>
+            <span>&#128188; Full-time</span>
+            <span>&#128640; Entry Level</span>
+          </div>
+          <div class="tags">
+            <span class="tag new">New</span>
+            <span class="tag">CompTIA A+</span>
+            <span class="tag">Help Desk</span>
+            <span class="tag">CTE Completer Eligible</span>
+          </div>
+        </div>
+      </div>
+      <div class="job-right">
+        <div class="job-salary">$42,000 – $58,000</div>
+        <a href="contact.html" class="btn-apply">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="job-card" data-cat="tech">
+      <div class="job-left">
+        <div class="job-logo">&#128737;&#65039;</div>
+        <div class="job-info">
+          <h3>Cybersecurity Analyst I</h3>
+          <div class="job-co">Inland Empire Tech Partners</div>
+          <div class="job-meta">
+            <span>&#128205; Riverside, CA</span>
+            <span>&#128188; Full-time</span>
+            <span>&#128640; Entry Level</span>
+          </div>
+          <div class="tags">
+            <span class="tag new">New</span>
+            <span class="tag">CompTIA Sec+</span>
+            <span class="tag">SIEM</span>
+            <span class="tag">Network Security</span>
+          </div>
+        </div>
+      </div>
+      <div class="job-right">
+        <div class="job-salary">$55,000 – $72,000</div>
+        <a href="contact.html" class="btn-apply">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="job-card" data-cat="health">
+      <div class="job-left">
+        <div class="job-logo">&#129656;</div>
+        <div class="job-info">
+          <h3>Dental Assistant</h3>
+          <div class="job-co">Arrowhead Regional Medical Center</div>
+          <div class="job-meta">
+            <span>&#128205; Colton, CA</span>
+            <span>&#128188; Full-time</span>
+            <span>&#128640; Entry Level</span>
+          </div>
+          <div class="tags">
+            <span class="tag new">New</span>
+            <span class="tag">RDA Eligible</span>
+            <span class="tag">HIPAA</span>
+            <span class="tag">Patient Care</span>
+          </div>
+        </div>
+      </div>
+      <div class="job-right">
+        <div class="job-salary">$38,000 – $52,000</div>
+        <a href="contact.html" class="btn-apply">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="job-card" data-cat="health">
+      <div class="job-left">
+        <div class="job-logo">&#127947;</div>
+        <div class="job-info">
+          <h3>Sports Medicine Assistant / Athletic Trainer Aide</h3>
+          <div class="job-co">SBCUSD Athletics Department</div>
+          <div class="job-meta">
+            <span>&#128205; San Bernardino, CA</span>
+            <span>&#128188; Part-time / Internship</span>
+            <span>&#128640; Student-Ready</span>
+          </div>
+          <div class="tags">
+            <span class="tag new">New</span>
+            <span class="tag">CPR Certified</span>
+            <span class="tag">First Aid</span>
+            <span class="tag">CCI Credit</span>
+          </div>
+        </div>
+      </div>
+      <div class="job-right">
+        <div class="job-salary">$18 – $22/hr</div>
+        <a href="contact.html" class="btn-apply">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="job-card" data-cat="trades">
+      <div class="job-left">
+        <div class="job-logo">&#128663;</div>
+        <div class="job-info">
+          <h3>Automotive Technician Apprentice</h3>
+          <div class="job-co">Inland Empire Auto Group</div>
+          <div class="job-meta">
+            <span>&#128205; San Bernardino, CA</span>
+            <span>&#128188; Pre-Apprenticeship</span>
+            <span>&#128640; Entry Level</span>
+          </div>
+          <div class="tags">
+            <span class="tag">ASE Eligible</span>
+            <span class="tag">Diagnostics</span>
+            <span class="tag">Registered Pre-Apprenticeship</span>
+          </div>
+        </div>
+      </div>
+      <div class="job-right">
+        <div class="job-salary">$19 – $26/hr</div>
+        <a href="contact.html" class="btn-apply">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="job-card" data-cat="trades">
+      <div class="job-left">
+        <div class="job-logo">&#127959;</div>
+        <div class="job-info">
+          <h3>Construction Trades Apprentice</h3>
+          <div class="job-co">Teamsters Local 1932 / SBCUSD Partner</div>
+          <div class="job-meta">
+            <span>&#128205; Inland Empire, CA</span>
+            <span>&#128188; Apprenticeship</span>
+            <span>&#128640; Entry Level</span>
+          </div>
+          <div class="tags">
+            <span class="tag new">New</span>
+            <span class="tag">Union Apprenticeship</span>
+            <span class="tag">OSHA 10</span>
+            <span class="tag">High Wage</span>
+          </div>
+        </div>
+      </div>
+      <div class="job-right">
+        <div class="job-salary">$22 – $35/hr</div>
+        <a href="contact.html" class="btn-apply">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="job-card" data-cat="public">
+      <div class="job-left">
+        <div class="job-logo">&#128110;</div>
+        <div class="job-info">
+          <h3>Public Safety Cadet / County Positions</h3>
+          <div class="job-co">San Bernardino County HR Department</div>
+          <div class="job-meta">
+            <span>&#128205; San Bernardino, CA</span>
+            <span>&#128188; Full-time</span>
+            <span>&#128640; Entry Level</span>
+          </div>
+          <div class="tags">
+            <span class="tag new">New</span>
+            <span class="tag">CTE Completer Eligible</span>
+            <span class="tag">County Employment</span>
+            <span class="tag">No Barriers to Entry</span>
+          </div>
+        </div>
+      </div>
+      <div class="job-right">
+        <div class="job-salary">$48,000 – $65,000</div>
+        <a href="contact.html" class="btn-apply">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="job-card" data-cat="business">
+      <div class="job-left">
+        <div class="job-logo">&#128201;</div>
+        <div class="job-info">
+          <h3>Logistics Coordinator</h3>
+          <div class="job-co">Inland Empire Logistics Hub</div>
+          <div class="job-meta">
+            <span>&#128205; Ontario, CA</span>
+            <span>&#128188; Full-time</span>
+            <span>&#128640; Entry / Mid Level</span>
+          </div>
+          <div class="tags">
+            <span class="tag">Supply Chain</span>
+            <span class="tag">Inventory Management</span>
+            <span class="tag">Excel</span>
+          </div>
+        </div>
+      </div>
+      <div class="job-right">
+        <div class="job-salary">$45,000 – $60,000</div>
+        <a href="contact.html" class="btn-apply">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="job-card" data-cat="arts">
+      <div class="job-left">
+        <div class="job-logo">&#127912;</div>
+        <div class="job-info">
+          <h3>Graphic Designer / Digital Media Producer</h3>
+          <div class="job-co">Technical Employment Training (TET)</div>
+          <div class="job-meta">
+            <span>&#128205; San Bernardino, CA</span>
+            <span>&#128188; Full-time</span>
+            <span>&#128640; Entry Level</span>
+          </div>
+          <div class="tags">
+            <span class="tag new">New</span>
+            <span class="tag">Adobe Creative Suite</span>
+            <span class="tag">Digital Design</span>
+            <span class="tag">Portfolio Required</span>
+          </div>
+        </div>
+      </div>
+      <div class="job-right">
+        <div class="job-salary">$40,000 – $55,000</div>
+        <a href="contact.html" class="btn-apply">Apply Now</a>
+      </div>
+    </div>
+
+    <div class="job-card" data-cat="tech">
+      <div class="job-left">
+        <div class="job-logo">&#9881;&#65039;</div>
+        <div class="job-info">
+          <h3>Engineering Technician (PLTW Graduate Track)</h3>
+          <div class="job-co">University of Redlands / Industry Partner</div>
+          <div class="job-meta">
+            <span>&#128205; Redlands, CA</span>
+            <span>&#128188; Internship / Part-time</span>
+            <span>&#128640; Student-Ready</span>
+          </div>
+          <div class="tags">
+            <span class="tag">PLTW</span>
+            <span class="tag">CAD/Design</span>
+            <span class="tag">Robotics</span>
+            <span class="tag">Articulation Credit</span>
+          </div>
+        </div>
+      </div>
+      <div class="job-right">
+        <div class="job-salary">$20 – $28/hr</div>
+        <a href="contact.html" class="btn-apply">Apply Now</a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <strong>SBCUSD Purposeful Pathways</strong> &mdash; San Bernardino City Unified School District &mdash; Making Hope Happen Since 1964<br />
+  <ul class="foot-links">
+    <li><a href="index.html">About</a></li>
+    <li><a href="graduates.html">Graduates</a></li>
+    <li><a href="jobs.html">Jobs</a></li>
+    <li><a href="contact.html">Get in Touch</a></li>
+  </ul>
+</footer>
+
+<script>
+  function filterJobs(cat, btn) {
+    document.querySelectorAll('.f-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.job-card').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'flex' : 'none';
+    });
+  }
+</script>
+
+</body>
+</html>

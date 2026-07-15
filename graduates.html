@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SBCUSD Purposeful Pathways — Graduate Statistics</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="nav-brand" href="index.html">SBCUSD Purposeful Pathways</a>
+    <ul class="nav-links">
+      <li><a href="index.html">About</a></li>
+      <li><a href="graduates.html" class="active">Graduates</a></li>
+      <li><a href="jobs.html">Jobs</a></li>
+      <li><a href="contact.html">Get in Touch</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Graduate Statistics</h1>
+  <p>Tracking CTE Pathway outcomes and student success across SBCUSD — Class of 2025 data.</p>
+  <div class="hero-badges">
+    <span class="badge">3,187 Class of 2025 Students</span>
+    <span class="badge">1,383 Pathway Completers</span>
+    <span class="badge">99.6% CTE Completer Grad Rate</span>
+  </div>
+</section>
+
+<main>
+  <div class="stats-row">
+    <div class="stat-card">
+      <span class="stat-num">99.6%</span>
+      <div class="stat-lbl">CTE Completer Graduation Rate<br /><span style="font-size:1.1rem;font-weight:700;color:var(--accent);">1,377 of 1,383 students</span></div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">72.4%</span>
+      <div class="stat-lbl">CTE Completers CCI Prepared<br /><span style="font-size:1.1rem;font-weight:700;color:var(--accent);">1,001 students</span></div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">58%</span>
+      <div class="stat-lbl">CTE Completer A-G Rate<br /><span style="font-size:1.1rem;font-weight:700;color:var(--accent);">802 students</span></div>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">+11.8%</span>
+      <div class="stat-lbl">District-Wide Pathway Completer Growth (3-Year)<br /><span style="font-size:1.1rem;font-weight:700;color:var(--accent);">+163 students since 2022–23</span></div>
+    </div>
+  </div>
+
+  <div class="charts-grid">
+
+    <!-- District vs CTE Completers comparison bar -->
+    <div class="chart-card full">
+      <h3>District vs. Pathway Completers — Class of 2025 <span>key outcome metrics</span></h3>
+      <canvas id="compareChart" height="80"></canvas>
+    </div>
+
+    <!-- Pathway completers by school donut -->
+    <div class="chart-card">
+      <h3>Pathway Completers by School <span>Class of 2025</span></h3>
+      <canvas id="donutChart"></canvas>
+    </div>
+
+    <!-- 3-year trend line -->
+    <div class="chart-card">
+      <h3>District Pathway Completer Rate <span>3-Year Trend</span></h3>
+      <canvas id="lineChart"></canvas>
+    </div>
+
+    <!-- School-by-school pathway completer rates -->
+    <div class="chart-card full">
+      <h3>Pathway Completer Rate by School — 2025 <span>% of graduating class</span></h3>
+      <canvas id="schoolChart" height="80"></canvas>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <strong>SBCUSD Purposeful Pathways</strong> &mdash; San Bernardino City Unified School District &mdash; Making Hope Happen Since 1964<br />
+  <ul class="foot-links">
+    <li><a href="index.html">About</a></li>
+    <li><a href="graduates.html">Graduates</a></li>
+    <li><a href="jobs.html">Jobs</a></li>
+    <li><a href="contact.html">Get in Touch</a></li>
+  </ul>
+</footer>
+
+<script>
+  const palette = [
+    '#e63946', // red
+    '#f4a261', // orange
+    '#2a9d8f', // teal
+    '#e9c46a', // amber
+    '#264653', // slate
+    '#6a994e', // green
+    '#7209b7', // purple
+    '#4cc9f0', // sky blue
+    '#bc6c25', // brown
+    '#e76f51'  // coral
+  ];
+
+  const groupTotals = { 'District': 3187, 'Non-CTE Participant': 1237, 'CTE Participant': 1950, 'CTE Completers': 1383 };
+
+  /* District vs Completers */
+  new Chart(document.getElementById('compareChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Grad Rate', 'A-G Rate', 'College Credits', 'CCI Prepared'],
+      datasets: [
+        {
+          label: 'District',
+          data: [93.7, 47.3, 31.8, 53.7],
+          backgroundColor: palette[4],
+          borderRadius: 5
+        },
+        {
+          label: 'Non-CTE Participant',
+          data: [83.8, 47.0, 16.9, 41.3],
+          backgroundColor: palette[0],
+          borderRadius: 5
+        },
+        {
+          label: 'CTE Participant',
+          data: [95.0, 47.3, 35.1, 56.2],
+          backgroundColor: palette[1],
+          borderRadius: 5
+        },
+        {
+          label: 'CTE Completers',
+          data: [99.6, 58.0, 45.7, 72.4],
+          backgroundColor: palette[2],
+          borderRadius: 5
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'top', labels: { font: { size: 12 }, padding: 16 } },
+        tooltip: { callbacks: { label: ctx => {
+          const n = Math.round(groupTotals[ctx.dataset.label] * ctx.raw / 100);
+          return ctx.dataset.label + ': ' + ctx.raw + '% (' + n.toLocaleString() + ' students)';
+        }}}
+      },
+      scales: {
+        y: { beginAtZero: true, max: 105, grid: { color: '#f1ead0' }, ticks: { callback: v => v + '%' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+
+  /* Donut — completers by school (Class of 2025 student counts) */
+  new Chart(document.getElementById('donutChart'), {
+    type: 'doughnut',
+    data: {
+      labels: ['AVHS','CHS','ISHS','PHS','SBHS','SGHS','MCHS','Virtual','SAHS','SHS'],
+      datasets: [{
+        data: [634, 575, 441, 254, 316, 307, 69, 34, 261, 296],
+        backgroundColor: palette,
+        borderWidth: 2,
+        borderColor: '#fff'
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { position: 'bottom', labels: { font: { size: 11 }, boxWidth: 12, padding: 10 } },
+        tooltip: { callbacks: { label: ctx => {
+          const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+          const pct = ((ctx.raw / total) * 100).toFixed(1);
+          return ctx.label + ': ' + ctx.raw.toLocaleString() + ' students (' + pct + '%)';
+        }}}
+      },
+      cutout: '60%'
+    }
+  });
+
+  /* Line — 3-year district completer rate */
+  const yearTotals = { '2022–23': 3002, '2023–24': 3089, '2024–25': 3187 };
+  new Chart(document.getElementById('lineChart'), {
+    type: 'line',
+    data: {
+      labels: ['2022–23', '2023–24', '2024–25'],
+      datasets: [{
+        label: 'District Pathway Completer %',
+        data: [31.5, 38.1, 43.4],
+        borderColor: palette[0],
+        backgroundColor: 'rgba(230,57,70,0.1)',
+        fill: true,
+        tension: 0.4,
+        pointBackgroundColor: palette[0],
+        pointRadius: 7,
+        pointBorderColor: palette[4],
+        pointBorderWidth: 2
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => {
+          const total = yearTotals[ctx.label];
+          const n = Math.round(total * ctx.raw / 100);
+          return 'Completer Rate: ' + ctx.raw + '% (' + n.toLocaleString() + ' students)';
+        }}}
+      },
+      scales: {
+        y: { min: 25, max: 50, grid: { color: '#f1ead0' }, ticks: { callback: v => v + '%' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+
+  /* School bar — 2025 completer rates */
+  const schoolTotals = {
+    'AVHS': 634, 'CHS': 575, 'ISHS': 441, 'PHS': 254,
+    'SBHS': 316, 'SGHS': 307, 'MCHS': 69, 'Virtual': 34,
+    'SAHS': 261, 'SHS': 296
+  };
+  new Chart(document.getElementById('schoolChart'), {
+    type: 'bar',
+    data: {
+      labels: ['AVHS','CHS','ISHS','PHS','SBHS','SGHS','MCHS','Virtual','SAHS','SHS'],
+      datasets: [{
+        label: '2025 Completer Rate %',
+        data: [48.7, 54.4, 32.4, 56.3, 45.6, 43.3, 24.6, 45.6, 43.4, 22.3],
+        backgroundColor: palette,
+        borderRadius: 6,
+        borderSkipped: false
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => {
+          const total = schoolTotals[ctx.label];
+          const n = Math.round(total * ctx.raw / 100);
+          return ctx.raw + '% of class (' + n.toLocaleString() + ' students)';
+        }}}
+      },
+      scales: {
+        y: { beginAtZero: true, max: 65, grid: { color: '#f1ead0' }, ticks: { callback: v => v + '%' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

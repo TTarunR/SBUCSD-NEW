@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SBCUSD Purposeful Pathways — Get in Touch</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="nav-brand" href="index.html">SBCUSD Purposeful Pathways</a>
+    <ul class="nav-links">
+      <li><a href="index.html">About</a></li>
+      <li><a href="graduates.html">Graduates</a></li>
+      <li><a href="jobs.html">Jobs</a></li>
+      <li><a href="contact.html" class="active">Get in Touch</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Get in Touch</h1>
+  <p>Have a job opening to post, a question about our pathways, or want to become an industry partner? Send us a message.</p>
+  <p style="margin-top:0.75rem; font-size:1rem; opacity:0.9;">If you have a job posting for our students, send it to us via the form below.</p>
+</section>
+
+<main>
+  <div class="contact-wrap">
+
+    <div class="c-info">
+      <h2>Contact Information</h2>
+      <p>Reach out through the form or use the contact details below. We welcome employer partnerships, program inquiries, and community connections that support our students.</p>
+
+      <div class="c-detail">
+        <div class="c-icon">&#128205;</div>
+        <div>
+          <strong>Address</strong>
+          <span>San Bernardino City Unified School District<br />777 N. F Street, San Bernardino, CA 92410</span>
+        </div>
+      </div>
+
+      <div class="c-detail">
+        <div class="c-icon">&#128336;</div>
+        <div>
+          <strong>Office Hours</strong>
+          <span>Mon–Fri, 8 AM – 4:30 PM PST</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h2>Send a Message</h2>
+
+      <!--
+        FORMSPREE SETUP:
+        1. Go to https://formspree.io and create a free account.
+        2. Create a new form — you'll get a URL like https://formspree.io/f/xabcdefg
+        3. Replace YOUR_FORMSPREE_ID below with your actual form ID (the part after /f/).
+        Formspree will forward all submissions to your admin email address.
+      -->
+      <form
+        id="contactForm"
+        action="https://formspree.io/f/YOUR_FORMSPREE_ID"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name <span class="req">*</span></label>
+            <input type="text" id="fname" name="first_name" placeholder="Jane" required />
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name <span class="req">*</span></label>
+            <input type="text" id="lname" name="last_name" placeholder="Doe" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address <span class="req">*</span></label>
+          <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" name="phone" placeholder="(909) 555-0100" />
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject <span class="req">*</span></label>
+          <select id="subject" name="subject" required>
+            <option value="" disabled selected>Select a topic...</option>
+            <option>Post a Job Opening</option>
+            <option>Employer / Industry Partnership</option>
+            <option>Question about Linked Learning Pathways</option>
+            <option>Work-Based Learning / Internship Inquiry</option>
+            <option>CTE Advisory Board Interest</option>
+            <option>General Question</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message <span class="req">*</span></label>
+          <textarea id="message" name="message" placeholder="Tell us how we can help you..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Attachment <span style="font-weight:400;color:var(--muted)">(optional — resume, job posting, etc.)</span></label>
+          <label class="file-label" for="fileInput">
+            <span class="up-icon">&#128196;</span>
+            <p><strong>Click to upload</strong> or drag and drop</p>
+            <p>PDF, DOC, DOCX, PNG, JPG up to 10 MB</p>
+          </label>
+          <input type="file" id="fileInput" name="attachment" accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" style="display:none" />
+          <div id="file-name"></div>
+        </div>
+
+        <input type="text" name="_gotcha" style="display:none" />
+
+        <button type="submit" class="btn-submit">&#9993;&#65039; Send Message</button>
+
+        <div id="successMsg" style="display:none; background:#f0fdf4; border:1px solid #bbf7d0; color:#15803d; padding:0.85rem 1rem; border-radius:8px; font-size:0.9rem; margin-top:1rem; text-align:center;">
+          &#10003; Your message has been sent! We'll be in touch within one business day.
+        </div>
+
+      </form>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <strong>SBCUSD Purposeful Pathways</strong> &mdash; San Bernardino City Unified School District &mdash; Making Hope Happen Since 1964<br />
+  <ul class="foot-links">
+    <li><a href="index.html">About</a></li>
+    <li><a href="graduates.html">Graduates</a></li>
+    <li><a href="jobs.html">Jobs</a></li>
+    <li><a href="contact.html">Get in Touch</a></li>
+  </ul>
+</footer>
+
+<script>
+  document.getElementById('fileInput').addEventListener('change', function () {
+    const nameEl = document.getElementById('file-name');
+    if (this.files.length > 0) {
+      nameEl.textContent = '📎 ' + this.files[0].name;
+      nameEl.style.display = 'block';
+    } else {
+      nameEl.style.display = 'none';
+    }
+  });
+
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('submitted') === 'true') {
+    document.getElementById('successMsg').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
